@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --verbose",
     "lint": "eslint --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
