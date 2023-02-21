@@ -51,6 +51,6 @@
     }
   },
   "lint-staged": {
-    "*.js": "eslint --fix ."
+    "*.js": "npx run lint"
   }
 }
