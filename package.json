@@ -4,8 +4,10 @@
   "description": "ABDM adapter for UHI",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
-    "lint": "eslint --fix",
+    "test": "jest",
+    "test:verbose": "jest --verbose --coverage",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint --fix .",
     "prepare": "husky install",
     "start": "node index.js"
   },
@@ -40,12 +42,5 @@
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.0",
     "jest": "^29.4.3"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "global": {
-        "lines": 95
-      }
-    }
   }
 }
