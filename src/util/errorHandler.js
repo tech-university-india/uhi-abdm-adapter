@@ -2,6 +2,7 @@ const { AxiosError } = require('axios')
 const { HttpError } = require('./errors/httpError')
 
 const errorHandlerInRoute = (error, req, res) => {
+  console.log(error)
   if (error instanceof HttpError) {
     res.status(error.statusCode).json({ message: error.message })
     return

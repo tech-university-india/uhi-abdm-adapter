@@ -10,6 +10,7 @@ client.on('connect', () => console.log('Redis client connected'))
 app.use(express.json())
 app.use(express.text())
 app.use(getJWTToken)
+
 const PORT = process.env.PORT || 9007
 
 app.use('*', routeController)

@@ -17,7 +17,8 @@ const ABDM_API_URLS = {
     ONBOARDING_VERIFY_MOBILE_OTP_URL: '/v2/registration/aadhaar/verifyMobileOTP',
     ONBOARDING_CREATE_HEALTH_ID_WITH_PRE_VERIFIED_URL: '/v1/registration/aadhaar/createHealthIdWithPreVerified',
     LOGIN_RESEND_OTP_ABHA_URL: '/v1/auth/resendAuthOTP',
-    FETCH_USER_AUTHORIZED_TOKEN: '/v2/registration/mobile/login/userAuthorizedToken'
+    FETCH_USER_AUTHORIZED_TOKEN: '/v2/registration/mobile/login/userAuthorizedToken',
+    AUTH_INIT: '/v1/auth/init'
   }
 
 }

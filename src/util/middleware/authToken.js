@@ -36,9 +36,14 @@ const fetchJWTTokenFromAdapter = async () => {
  * @param {*} next
  */
 const getJWTToken = async (request, response, next) => {
-  const token = await fetchJWTTokenFromAdapter()
-  request.headers.authorization = `Bearer ${token}`
-  next()
+  try {
+    const token = await fetchJWTTokenFromAdapter()
+    request.headers.authorization = `Bearer ${token}`
+    next()
+  } catch (error) {
+    console.log(error)
+    response.status(500).json({ message: 'Internal Server Error' })
+  }
 }
 
 module.exports = { getJWTToken }
