@@ -12,7 +12,9 @@ const errorHandlerInRoute = (error, req, res) => {
 const handleAxiosError = (error) => {
   if (error instanceof AxiosError) {
     const response = error.response
-    throw new HttpError(response.data.details[0].message, 400)
+    const message = response.data?.details[0].message
+
+    throw new HttpError(message, 400)
   }
   throw Error(error)
 }

@@ -2,22 +2,11 @@ const { default: axios } = require('axios')
 const { SERVICE_URLS } = require('../../config')
 const https = require('https')
 const { handleAxiosError } = require('../util/errorHandler')
-const makeRequest = require('../util/makeRequest')
+const request = require('../util/makeRequest')
 
 const callHealthService = async ({ method = 'POST', path, headers, body }) => {
   try {
-    const response = axios({
-
-      method,
-      url: 'https://healthidsbx.abdm.gov.in/api/v2/registration/mobile/login/userAuthorizedToken',
-      headers,
-      data: body
-    })
-
-    // const response = await axios.post(SERVICE_URLS.ABDM_HEALTH_SERVICE_URL + path, body, {
-    //   headers
-    // })
-    // console.log(response)
+    const response = await request.makeRequest(SERVICE_URLS.ABDM_HEALTH_SERVICE_URL, path, method, data, headers)
     return { data: response.data, status: response.status }
   } catch (error) {
     if (error instanceof AxiosError) {
