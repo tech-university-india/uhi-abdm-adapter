@@ -2,6 +2,7 @@ const { default: axios } = require('axios')
 const { SERVICE_URLS } = require('../../config')
 const https = require('https')
 const { handleAxiosError } = require('../util/errorHandler')
+const makeRequest = require('../util/makeRequest')
 
 const callHealthService = async ({ method = 'POST', path, headers, body }) => {
   try {
@@ -19,15 +20,16 @@ const callHealthService = async ({ method = 'POST', path, headers, body }) => {
     // console.log(response)
     return { data: response.data, status: response.status }
   } catch (error) {
-    console.log(error)
-    handleAxiosError(error)
+    if (error instanceof AxiosError) {
+      return handleAxiosError(error)
+    }
+    throw new Error('Something went wrong')
   }
 }
 
 const handleRequest = async (path, method, request) => {
-  const { headers, body } = request
-
-  const response = await callHealthService({ method, path, headers, body })
+  const headers = { 'X-Token': request.headers['X-Token'] ?? undefined, 'T-Token': request.headers['T-Token'] ?? undefined }
+  const response = await callHealthService({ method, path, headers, data: request.body })
   return response
 }
 
