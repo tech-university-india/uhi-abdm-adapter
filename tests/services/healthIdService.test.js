@@ -1,6 +1,5 @@
 const { AxiosError } = require('axios')
-const { handleRequest, callHealthService } = require('../../src/services/healthIdService')
-const { HttpError } = require('../../src/util/errors/httpError')
+const { handleRequest } = require('../../src/services/healthIdService')
 const makeRequest = require('../../src/util/makeRequest')
 describe('ABDM Service for Health ID', () => {
   describe('Generic fn for API calls', () => {

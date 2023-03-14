@@ -1,17 +1,17 @@
 const redis = require('redis')
-
+require('dotenv').config()
 const USE_URL = process.env.USE_REDIS_URL || false
 const REDIS_URL = process.env.REDIS_URL
 
 const options = {
   socket: {
     host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT
+    port: parseInt(process.env.REDIS_PORT) || 6379
   },
 
   username: process.env.REDIS_USERNAME,
   name: process.env.REDIS_NAME,
-  database: process.env.REDIS_DB,
+  database: parseInt(process.env.REDIS_DB || 1),
   password: process.env.REDIS_PASSWORD
 }
 

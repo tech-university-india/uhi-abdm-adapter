@@ -1,10 +1,9 @@
-const { default: axios } = require('axios')
+const { AxiosError } = require('axios')
 const { SERVICE_URLS } = require('../../config')
-const https = require('https')
 const { handleAxiosError } = require('../util/errorHandler')
 const request = require('../util/makeRequest')
 
-const callHealthService = async ({ method = 'POST', path, headers, body }) => {
+const callHealthService = async ({ method = 'POST', path, headers, data }) => {
   try {
     const response = await request.makeRequest(SERVICE_URLS.ABDM_HEALTH_SERVICE_URL, path, method, data, headers)
     return { data: response.data, status: response.status }
