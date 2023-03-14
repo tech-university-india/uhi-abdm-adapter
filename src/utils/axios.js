@@ -11,10 +11,10 @@ const cacheAxios = async (requestOptions, isToken) => {
   }
   const { data } = await axios(requestOptions)
   if (isToken) {
-    const { exp } = jwt.decode(data.accessToken)
+    const { exp } = jwt.decode(data.accessToken ?? data)
     DEFAULT_EXPIRY = exp - Math.floor(Date.now() / 1000)
   }
-  await setCache(requestOptions.url, JSON.stringify(data), DEFAULT_EXPIRY)
+  await setCache(requestOptions.url, JSON.stringify(data.accessToken ? data : { accessToken: data }), DEFAULT_EXPIRY)
   return data
 }
 
