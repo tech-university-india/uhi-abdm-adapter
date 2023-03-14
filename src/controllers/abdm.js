@@ -1,3 +1,4 @@
+const { AxiosError } = require('axios')
 const healthId = require('../services/healthId')
 
 const abdm = async (req, res) => {
@@ -6,7 +7,13 @@ const abdm = async (req, res) => {
     const response = await healthId(path, method, headers, body)
     res.status(response.status).send(response.data)
   } catch (error) {
-    res.status(500).send(error.message)
+    if (error instanceof AxiosError) {
+      res
+        .status(error.response.status)
+        .json({ message: error.response.data?.details[0].message ?? 'Some Error Occoured' })
+    } else {
+      res.status(500).json({ message: 'Internal Server Error' })
+    }
   }
 }
 
