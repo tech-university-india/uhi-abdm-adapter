@@ -1,7 +1,7 @@
 const cacheAxios = require('../utils/axios')
 
 // Change this to custom aws lambda route while running locally - krke
-const SANDBOX_URL = process.env.SANDBOX_URL
+const SANDBOX_URL = process.env.SANDBOXURL
 const getToken = async () => {
   if (SANDBOX_URL) {
     const { accessToken } = await cacheAxios(
