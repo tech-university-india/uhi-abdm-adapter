@@ -9,4 +9,5 @@ RUN npm install
 
 COPY . .
 
+EXPOSE 9007
 ENTRYPOINT [ "npm", "run", "start" ]
